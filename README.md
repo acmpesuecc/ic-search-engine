@@ -1,2 +1,3 @@
 # ic-search-engine
-Collaborators
+Project for AIEP 2.0
+Collaborators:
