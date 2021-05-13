@@ -1,0 +1,2 @@
+FLASK_APP=ic_search_engine
+FLASK_ENV=development
