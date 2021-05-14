@@ -20,3 +20,9 @@ class integrated_circuit:
         if format == 'dict':
             return dict
         return jsonify(dict)
+
+    def get_search_data(self):
+        filtered_pinout = {key: value for key, value in self.pinout.items() if value != 'UNKNOWN'}
+        dict = {"name":self.name,"manufacturer":self.manufacturer,"pin_count":self.pin_count,"description":self.description,"pinout":filtered_pinout,"pinout_str":str(filtered_pinout)}
+        filtered_dict = {key: value for key, value in dict.items() if value != 'UNKNOWN'}
+        return dict
