@@ -1,7 +1,17 @@
+'''
+    Constants and weights for the aggregation pipeline.
+    Modifying these weights changes what parameter is given priority when searching.
+'''
+
+#weight for pinout
 PINOUT_WT = 50
+#weight for pin count
 PIN_COUNT_WT = 50
+#weight for manufacturer name
 NAME_MANUFACTURER_WT = 10
+#weight for description of IC
 DESCCRIPTION_WT = 5
+#weight for shape of IC
 SHAPE_WT = 50
 
 def get_aggregation_pipeline(ic):
