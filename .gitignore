@@ -3,3 +3,6 @@
 __pycache__/*
 web_scraper.py
 temp
+*.jpg
+*.png
+*.jpeg

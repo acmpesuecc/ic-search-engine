@@ -82,8 +82,33 @@ class identifier:
                 dists = [x.find_dist(i) for x in self.pins_list]
             if len(self.pins_list) == 0:
                     break
+        #rotate image to get rotated text:
+        self.pins_list = list()
+        self.pin_nos_list = list()
+        self.rot_img_90()
+        self.text_from_img()
+        max_w = abs(max(list(x.width for x in self.pins_list)))
+        for i in self.pin_nos_list:
+            dists = [x.find_dist(i) for x in self.pins_list]
+            min_ = min(dists)
+            min_index = dists.index(min(dists))
+            if min_ <= max_w + self.hImg//8:
+                pins_dict[i.text] = self.pins_list[min_index]
+                self.pins_list.pop(min_index)
+                dists = [x.find_dist(i) for x in self.pins_list]
+            if len(self.pins_list) == 0:
+                    break
+        self.undo_rot_img_90()
         #Return said dictionary
         return pins_dict
+
+    def rot_img_90(self):
+        image = cv2.rotate(self.img, cv2.cv2.ROTATE_90_CLOCKWISE)
+        cv2.imwrite(self.img_addr, image)
+
+    def undo_rot_img_90(self):
+        image = cv2.rotate(self.img, cv2.cv2.ROTATE_90_COUNTERCLOCKWISE)
+        cv2.imwrite(self.img_addr, image)
 
 if __name__ == '__main__':
     img_path = 'pin4.jpg'
